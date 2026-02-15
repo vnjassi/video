@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Cyberpunk Generator</title>
+    <style>
+        body{
+            background:black;
+            color:cyan;
+            text-align:center;
+            font-family:Arial;
+            padding-top:100px;
+        }
+        button{
+            padding:20px 40px;
+            font-size:20px;
+            background:cyan;
+            border:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cyberpunk Robot Generator</h1>
+    <button onclick="generate()">Generate Cinematic</button>
+
+    <p id="status"></p>
+
+<script>
+function generate(){
+    document.getElementById("status").innerHTML="Rendering...";
+    
+    fetch("http://127.0.0.1:5000/render")
+    .then(res=>res.text())
+    .then(data=>{
+        document.getElementById("status").innerHTML=data;
+    });
+}
+</script>
+</body>
+</html>
